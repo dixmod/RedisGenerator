@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use App\Command\Generator;
+//use App\Command\Show;
+use Symfony\Component\Console\Application;
+
+$app = new Application('RedisGenerator', 1.0);
+$app->add(new Generator());
+//$app->add(new Show());
+
+$app->run();
