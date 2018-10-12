@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Entity\Event;
+declare(strict_types = 1);
+
+namespace App\Entity;
 
 interface EventInterface
 {

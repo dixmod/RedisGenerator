@@ -16,7 +16,7 @@ class Show extends Command
     protected function configure()
     {
         $this->setName('statistics:show')
-            ->setDescription('Displaying OTUS channel statistics on Youtube');
+            ->setDescription('Displaying data');
     }
 
     /**

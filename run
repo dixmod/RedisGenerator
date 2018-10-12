@@ -2,13 +2,13 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/src/bootstrap.php';
+
 
 use App\Command\Generator;
-//use App\Command\Show;
 use Symfony\Component\Console\Application;
 
 $app = new Application('RedisGenerator', 1.0);
 $app->add(new Generator());
-//$app->add(new Show());
 
 $app->run();

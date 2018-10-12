@@ -1,22 +1,11 @@
 <?php
 
-global $config, $container;
+use App\Service\Config;
+use App\Service\Container;
 
-
-$config = include dirname(__DIR__) . '/config/config.php';
-
-$containerBuilder = new \DI\ContainerBuilder();
-$containerBuilder->useAutowiring(true);
-$container = $containerBuilder->build();
-
-/*$container->set(
-    App\Repository\Youtube::class,
-    \DI\create(\App\Repository\Youtube::class)->constructor(
-        \DI\get(\App\Client\Client::class)
+Container::set(
+    Config::getOptions('db')['client'],
+    \DI\create(Config::getOptions('db')['client'])->constructor(
+        Config::getOptions('db')['client']
     )
-);*/
-
-/*$container->set(
-    \App\Service\Channel\ConverterChannelFromApi::class,
-    \DI\create(\App\Service\Channel\ConverterChannelFromApi::class)
-);*/
+);
