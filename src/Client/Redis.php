@@ -2,8 +2,6 @@
 
 namespace App\Client;
 
-use App\Service\Config;
-
 class Redis
 {
     protected $db;
@@ -42,21 +40,29 @@ class Redis
     }
 
     /**
-     * @param array $data
-     * @return bool|mixed
-     */
-    public function update($data)
-    {
-
-    }
-
-    /**
      * @param $key
      * @param array $data
      * @return bool|mixed
      */
-    public function add($key, $data): bool
+    public function update($key, $data)
     {
-        return $this->client->set($key, $data);
+        $this->client->set($key, $data);
+    }
+
+    /**
+     * @param array $data
+     * @return bool|mixed
+     */
+    public function add($data): bool
+    {
+        $key = $this->keyGen();
+        $this->client->update($key, $data);
+
+        return $key;
+    }
+
+    private function keyGen()
+    {
+        return $this->db.':';
     }
 }

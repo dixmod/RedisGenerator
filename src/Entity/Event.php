@@ -9,7 +9,7 @@ use App\Service\Config;
 use App\Service\Container;
 use App\Service\Serialize\ModelSerialize;
 
-class Event  extends ModelSerialize implements EventInterface
+class Event extends ModelSerialize implements EventInterface
 {
     /** @var RepositoryInterface */
     private static $repository;
@@ -43,16 +43,9 @@ class Event  extends ModelSerialize implements EventInterface
         $this->conditions = $conditions;
     }
 
-    /**
-     *
-     */
     public function save(): void
     {
-        if ($this->id) {
-            self::$repository->save($this->toArray());
-        } else {
-            $this->id = self::$repository->add($this->toArray());
-        }
+        self::$repository->save($this->toArray());
     }
 
     /**
