@@ -2,7 +2,7 @@
 
 namespace App\Client;
 
-class Redis
+class Redis implements ClientInterface
 {
     protected $db;
 
